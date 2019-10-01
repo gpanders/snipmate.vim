@@ -1,3 +1,3 @@
-## snipMate
+## snipmate.vim
 
-The most recent version of snipMate is now available at [@garbas/vim-snipmate](https://github.com/garbas/vim-snipmate).
+Modernized fork of [snipmate.vim](https://github.com/msanders/snipmate.vim).

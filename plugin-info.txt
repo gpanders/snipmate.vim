@@ -4,5 +4,5 @@
   "author" : "Michael Sanders <msanders42@gmail.com>",
   "repository" : {"type": "git", "url": "git://github.com/msanders/snipmate.vim.git"},
   "dependencies" : {},
-  "description" : "snipMate.vim aims to be a concise vim script that implements some of TextMate's snippets features in Vim."
+  "description" : "snipmate.vim aims to be a concise vim script that implements some of TextMate's snippets features in Vim."
 }

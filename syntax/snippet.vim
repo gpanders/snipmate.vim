@@ -1,4 +1,4 @@
-" Syntax highlighting for snippet files (used for snipMate.vim)
+" Syntax highlighting for snippet files (used for snipmate.vim)
 " Hopefully this should make snippets a bit nicer to write!
 syn match snipComment '^#.*'
 syn match placeHolder '\${\d\+\(:.\{-}\)\=}' contains=snipCommand
