@@ -132,7 +132,7 @@ TextMates's functionality, use the |system()| function. E.g.: >
 will insert the current date, assuming you are on a Unix system. Note that you
 can also (and should) use |strftime()| for this example.
 
-Filename([{expr}] [, {defaultText}])             *snipmate-filename* *Filename()*
+Filename([{expr}] [, {defaultText}])          *snipmate-filename* *Filename()*
 
 Since the current filename is used often in snippets, a default function
 has been defined for it in snipmate.vim, appropriately called Filename().
@@ -146,8 +146,10 @@ blank. Examples: >
 
  snippet filename
  	`Filename()`
+
  snippet filename_with_default
  	`Filename('', 'name')`
+
  snippet filename_foo
  	`filename('$1_foo')`
 
@@ -156,12 +158,13 @@ empty string if it hasn't. The second returns the filename if it's been named,
 and "name" if it hasn't. The third returns the filename followed by "_foo" if
 it has been named, and an empty string if it hasn't.
 
-                                                                   *multi_snip*
+                                                                  *multi_snip*
 To specify that a snippet can have multiple matches in a *.snippets file, use
 this syntax: >
 
  snippet trigger A description of snippet #1
  	expand this text
+
  snippet trigger A description of snippet #2
  	expand THIS text!
 
@@ -172,6 +175,25 @@ corresponding number, that snippet will then be expanded.
 To create a snippet with multiple matches using *.snippet files,
 simply place all the snippets in a subdirectory with the trigger name:
 'snippets/<filetype>/<trigger>/<name>.snippet'.
+
+						      *snipmate-nested-syntax*
+Nested Syntax ~
+
+Snipmate ships with syntax highlighting for snippets files and has the option
+to highlight the syntax within the snippets themselves. For example, snippets
+defined in |c.vim| would be highlighted as C files.
+
+Snipmate does its best to continue to highlight snipmate specific items (such
+as tab stops and placeholders); however, given the limitations of Vim's syntax
+highlighting engine it is not always possible to correctly differentiate
+between a snipmate token and a token from the snippet language (for example,
+in a bash snippet, $1 could be either a snipmate tabstop or the bash symbol
+for the first positional argument). NOTE: This ONLY applies to syntax
+highlighting and NOT to snipmate's ability to parse snippets. You can disable
+nested highlighting by writing the following in your |vimrc| or to the file
+|~/.vim/syntax/snippet.vim|: >
+
+    let g:snipmate_nested_syntax = 0
 
 ==============================================================================
 USAGE                                                         *snipmate-usage*
@@ -191,7 +213,7 @@ ExtractSnipsFile() extracts the specified *.snippets file for the given
 filetype. A .snippets file contains multiple snippet declarations for the
 filetype. It is further explained above, in |snippet-syntax|.
 
-ExtractSnips({directory}, {filetype})             *ExtractSnips()* *.snippet*
+ExtractSnips({directory}, {filetype})              *ExtractSnips()* *.snippet*
 
 ExtractSnips() extracts *.snippet files from the specified directory and
 defines them as snippets for the given filetype. The directory tree should

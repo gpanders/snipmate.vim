@@ -2,40 +2,56 @@ snippet php
 	<?php
 	${1}
 	?>
+
 snippet ec
 	echo "${1:string}"${2};
+
 snippet inc
 	include '${1:file}';${2}
+
 snippet inc1
 	include_once '${1:file}';${2}
+
 snippet req
 	require '${1:file}';${2}
+
 snippet req1
 	require_once '${1:file}';${2}
+
 # $GLOBALS['...']
 snippet globals
 	$GLOBALS['${1:variable}']${2: = }${3:something}${4:;}${5}
+
 snippet $_ COOKIE['...']
 	$_COOKIE['${1:variable}']${2}
+
 snippet $_ ENV['...']
 	$_ENV['${1:variable}']${2}
+
 snippet $_ FILES['...']
 	$_FILES['${1:variable}']${2}
+
 snippet $_ Get['...']
 	$_GET['${1:variable}']${2}
+
 snippet $_ POST['...']
 	$_POST['${1:variable}']${2}
+
 snippet $_ REQUEST['...']
 	$_REQUEST['${1:variable}']${2}
+
 snippet $_ SERVER['...']
 	$_SERVER['${1:variable}']${2}
+
 snippet $_ SESSION['...']
 	$_SESSION['${1:variable}']${2}
+
 # Start Docblock
 snippet /*
 	/**
 	 * ${1}
 	 **/
+
 # Class - post doc
 snippet doc_cp
 	/**
@@ -44,6 +60,7 @@ snippet doc_cp
 	 * @package ${2:default}
 	 * @author ${3:`g:snips_author`}
 	**/${4}
+
 # Class Variable - post doc
 snippet doc_vp
 	/**
@@ -51,6 +68,7 @@ snippet doc_vp
 	 *
 	 * @var ${2:string}
 	 **/${3}
+
 # Class Variable
 snippet doc_v
 	/**
@@ -59,6 +77,7 @@ snippet doc_v
 	 * @var ${4:string}
 	 **/
 	${1:var} $${2};${5}
+
 # Class
 snippet doc_c
 	/**
@@ -70,17 +89,20 @@ snippet doc_c
 	${1:}class ${2:}
 	{${6}
 	} // END $1class $2
+
 # Constant Definition - post doc
 snippet doc_dp
 	/**
 	 * ${1:undocumented constant}
 	 **/${2}
+
 # Constant Definition
 snippet doc_d
 	/**
 	 * ${3:undocumented constant}
 	 **/
 	define(${1}, ${2});${4}
+
 # Function - post doc
 snippet doc_fp
 	/**
@@ -89,6 +111,7 @@ snippet doc_fp
 	 * @return ${2:void}
 	 * @author ${3:`g:snips_author`}
 	 **/${4}
+
 # Function signature
 snippet doc_s
 	/**
@@ -98,6 +121,7 @@ snippet doc_s
 	 * @author ${6:`g:snips_author`}
 	 **/
 	${1}function ${2}(${3});${7}
+
 # Function
 snippet doc_f
 	/**
@@ -109,6 +133,7 @@ snippet doc_f
 	${1}function ${2}(${3})
 	{${7}
 	}
+
 # Header
 snippet doc_h
 	/**
@@ -123,6 +148,7 @@ snippet doc_h
 	/**
 	 * Define DocBlock
 	 *//
+
 # Interface
 snippet doc_i
 	/**
@@ -134,6 +160,7 @@ snippet doc_i
 	interface ${1:}
 	{${5}
 	} // END interface $1
+
 # class ...
 snippet class
 	/**
@@ -147,25 +174,31 @@ snippet class
 			${6:// code...}
 		}
 	}
+
 # define(...)
 snippet def
 	define('${1}'${2});${3}
+
 # defined(...)
 snippet def?
 	${1}defined('${2}')${3}
+
 snippet wh
 	while (${1:/* condition */}) {
 		${2:// code...}
 	}
+
 # do ... while
 snippet do
 	do {
 		${2:// code... }
 	} while (${1:/* condition */});
+
 snippet if
 	if (${1:/* condition */}) {
 		${2:// code...}
 	}
+
 snippet ife
 	if (${1:/* condition */}) {
 		${2:// code...}
@@ -173,17 +206,21 @@ snippet ife
 		${3:// code...}
 	}
 	${4}
+
 snippet else
 	else {
 		${1:// code...}
 	}
+
 snippet elseif
 	elseif (${1:/* condition */}) {
 		${2:// code...}
 	}
+
 # Tertiary conditional
 snippet t
 	$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b};${5}
+
 snippet switch
 	switch ($${1:variable}) {
 		case '${2:value}':
@@ -194,23 +231,28 @@ snippet switch
 			${4:// code...}
 			break;
 	}
+
 snippet case
 	case '${1:value}':
 		${2:// code...}
 		break;${3}
+
 snippet for
 	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
 		${4: // code...}
 	}
+
 snippet foreach
 	foreach ($${1:variable} as $${2:key}) {
 		${3:// code...}
 	}
+
 snippet fun
 	${1:public }function ${2:FunctionName}(${3})
 	{
 		${4:// code...}
 	}
+
 # $... = array (...)
 snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}

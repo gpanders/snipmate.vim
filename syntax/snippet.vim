@@ -1,5 +1,19 @@
-" Syntax highlighting for snippet files (used for snipmate.vim)
-" Hopefully this should make snippets a bit nicer to write!
+if exists('b:current_syntax')
+    finish
+endif
+
+if !exists('g:snipmate_nested_syntax')
+    let g:snipmate_nested_syntax = 1
+endif
+
+let filetype = expand('%:t:r')
+if g:snipmate_nested_syntax && filetype !=# '_'
+    silent! exe 'syn include @snippetHighlight' . filetype . ' syntax/' . filetype . '.vim'
+    unlet! b:current_syntax
+
+    exe 'syn region snippetHighlight' . filetype . ' start="^\t" end="^$" keepend contains=placeHolder,tabStop,snipCommand,@snippetHighlight' . filetype
+endif
+
 syn match snipComment '^#.*'
 syn match placeHolder '\${\d\+\(:.\{-}\)\=}' contains=snipCommand
 syn match tabStop '\$\d\+'
@@ -17,3 +31,5 @@ hi link placeHolder   Special
 hi link tabStop       Special
 hi link snipCommand   String
 hi link snipError     Error
+
+let b:current_syntax = 'snippet'
