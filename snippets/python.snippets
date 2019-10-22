@@ -6,11 +6,11 @@ snippet imp
 
 # Module Docstring
 snippet docs
-	'''
+	"""
 	File: ${1:`Filename('$1.py', 'foo.py')`}
 	Author: ${2:`g:snips_author`}
 	Description: ${3}
-	'''
+	"""
 
 snippet wh
 	while ${1:condition}:
@@ -92,9 +92,9 @@ snippet try Try/Except/Else/Finally
 	finally:
 		${6:pass}
 
-# if __name__ == '__main__':
+# if __name__ == "__main__":
 snippet ifmain
-	if __name__ == '__main__':
+	if __name__ == "__main__":
 		${1:main()}
 
 # __magic__
