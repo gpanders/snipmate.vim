@@ -45,7 +45,7 @@ function! snipmate#expandSnip(snip, col)
 		endif
 	endif
 
-	call setline(lnum, line.snipLines[0])
+	call setline(lnum, line . snipLines[0])
 
 	" Autoindent snippet according to previous indentation
 	let indent = matchend(line, '^.\{-}\ze\(\S\|$\)') + 1

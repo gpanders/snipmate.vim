@@ -16,12 +16,10 @@ endfunction
 
 " Define "aliasft" snippets for the filetype "realft".
 function! s:DefineSnips(dir, aliasft, realft)
-    for path in split(globpath(a:dir, a:aliasft . '/') . "\n".
-                \ globpath(a:dir, a:aliasft . '-*/'), "\n")
+    for path in globpath(a:dir, a:aliasft . '/', 0, 1) + globpath(a:dir, a:aliasft . '-*/', 0, 1)
         call s:ExtractSnips(path, a:realft)
     endfor
-    for path in split(globpath(a:dir, a:aliasft . '.snippets') . "\n".
-                \ globpath(a:dir, a:aliasft . '-*.snippets'), "\n")
+    for path in globpath(a:dir, a:aliasft . '.snippets', 0, 1) + globpath(a:dir, a:aliasft . '-*.snippets', 0, 1)
         call s:ExtractSnipsFile(path, a:realft)
     endfor
 endfunction
@@ -45,13 +43,22 @@ function! s:ExtractSnipsFile(file, ft)
     endif
     let text = readfile(a:file)
     let inSnip = 0
+    let blank = 0
     for line in text + ["\n"]
-        if inSnip && (line[0] ==# "\t" || line ==# '')
+        if inSnip && line[0] ==# "\t"
+            if blank
+                let content .= repeat("\n", blank)
+                let blank = 0
+            endif
             let content .= strpart(line, 1) . "\n"
+            continue
+        elseif inSnip && line ==# ''
+            let blank += 1
             continue
         elseif inSnip
             call s:MakeSnip(a:ft, trigger, content[:-2], name)
             let inSnip = 0
+            let blank = 0
         endif
 
         if line[:6] ==# 'snippet'

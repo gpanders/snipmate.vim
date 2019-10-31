@@ -45,7 +45,7 @@ let g:snipmate_snippets = {}
 let g:snipmate_multi_snips = {}
 
 if !exists('g:snippets_dir')
-    let g:snippets_dir = substitute(globpath(&runtimepath, 'snippets/'), "\n", ',', 'g')
+    let g:snippets_dir = join(globpath(&runtimepath, 'snippets/', 0, 1), ',')
 endif
 
 command! -nargs=? SnipMateReset if !empty('<args>') | call snipmate#util#ResetSnippets('<args>') | else | call snipmate#util#ResetAllSnippets() | endif
